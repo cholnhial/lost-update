@@ -23,7 +23,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String accountNumber;
-    private BigDecimal balance;
+    private long balance;
 
     @Override
     public boolean equals(Object o) {

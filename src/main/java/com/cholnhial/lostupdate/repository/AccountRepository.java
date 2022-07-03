@@ -18,7 +18,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = """
         SELECT balance
         FROM account
-        WHERE accountNumber = :an
+        WHERE account_number = :an
         """,
             nativeQuery = true)
     long getBalance(@Param("an") String an);
@@ -26,10 +26,10 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = """
         UPDATE account
         SET balance = balance + :cents
-        WHERE accountNumber = :an
+        WHERE account_number = :an
         """,
             nativeQuery = true)
     @Modifying
     @Transactional
-    int addBalance(@Param("iban") String iban, @Param("cents") BigDecimal cents);
+    int addBalance(@Param("an") String an, @Param("cents") long cents);
 }
